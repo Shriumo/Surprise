@@ -1,0 +1,111 @@
+/* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  overflow: hidden;
+  transition: background-color 1s ease;
+  background: linear-gradient(45deg, #ff7e5f, #feb47b); /* Initial background color */
+}
+
+/* Moomin Container */
+.moomin-container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  z-index: 10; /* Ensures the Moomin image is on top */
+}
+
+/* Moomin Image Styling */
+.moomin-img {
+  width: 200px;
+  height: auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 10px;
+  animation: floatAndRotate 4s infinite alternate ease-in-out;
+}
+
+/* Hover Effect for Scaling */
+.moomin-img:hover {
+  transform: scale(1.2) rotate(10deg);  /* Scale up and rotate slightly */
+  box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.8); /* Glowing effect on hover */
+}
+
+/* Floating and Rotation Animation (while idle) */
+@keyframes floatAndRotate {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(5deg); /* Moves up and rotates */
+  }
+  100% {
+    transform: translateY(0) rotate(0deg); /* Goes back to original position */
+  }
+}
+
+/* Surprise Box */
+.surprise-box {
+  display: none;
+  margin-top: 30px;
+  padding: 20px;
+  background-color: rgb(0, 0, 0);
+  color: white;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  opacity: 0;  /* Start hidden */
+  transition: opacity 1s ease-out;  /* Smooth transition for fade */
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.5em;
+  font-family: 'Comic Sans MS', cursive, sans-serif; /* Cute font for the song display */
+}
+
+/* Willobhy Message */
+.willobhy-message {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  color: white;
+  font-size: 1.2em;
+  font-weight: bold;
+  display: none;
+  font-family: 'Comic Sans MS', cursive, sans-serif; /* Matching font for the message */
+}
+
+/* Animation for Showing the Surprise Box */
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Animation for Song Fade-in */
+@keyframes songFadeIn {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.surprise-box h2 {
+  font-size: 1.3em; /* Smaller font for song and artist */
+  font-family: 'Arial', sans-serif;
+  color: white;
+  animation: songFadeIn 6s ease-in-out forwards; /* Fade effect for song name */
+}
+
+.surprise-box span {
+  font-size: 1.2em; /* Smaller font for the artist name */
+  font-style: italic;
+  color: #f7fc00;
+}
